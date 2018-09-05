@@ -1,6 +1,7 @@
 <h1> Departments </h1>
-<p><%= link_to 'New Department', new_page_path %></p>
+<p><%= link_to 'New Department', new_department_path %></p>
 <% @departments.each do |department| %>
   <h2><%= department.title %></h2>
-  <%= link_to 'Show Department', department_path(page) %>
+  <%= link_to 'Show Department', department_path(department) %>
+  <%= link_to 'Edit Department', edit_department_path(department) %>
 <% end %>
