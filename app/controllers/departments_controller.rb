@@ -33,13 +33,26 @@ class DepartmentsController < ApplicationController
   end
 
   def update
+    if @department.update(sub_params)
+      redirect_to @department
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @department.destroy
+    redirect_to departments_path
   end
 
   private 
+  
+    def set_sub
+      @sub = Sub.find(params[:id])
+    end
+
     def departments_params
       params.require(:department).permit(:title)
     end
+
 end
