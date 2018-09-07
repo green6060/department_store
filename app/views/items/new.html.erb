@@ -1,2 +1,7 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<h1><%= @item.id ? 'Edit Item' : 'Create Item' %></h1>
+<%= form_for [@department, @item] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.submit %>
+<% end %>

@@ -1,2 +1,4 @@
 <h1><%= @department.title %></h1>
+<p><%= link_to 'New Item', new_department_item_path(@department) %></p>
+
 <%= link_to 'Back', departments_path %>

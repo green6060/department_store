@@ -1,20 +1,28 @@
+require 'pry'
+
 class ItemsController < ApplicationController
   before_action :set_department
-  before_action :set_item
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.all
+    @items = @department.items
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def new
-    @item = Item.new
+    binding.pry
+    @item = @department.items.new
   end
 
   def create
+    @item = @department.items.new(item_params)
+    if @item.save
+      redirect_to [@department, @item]
+    else
+      render :new
+    end
   end
 
   def update
